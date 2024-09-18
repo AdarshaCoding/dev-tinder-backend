@@ -4,6 +4,8 @@
   "description": "Dev Tinder Backend Application",
   "main": "index.js",
   "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js",
     "test": "jest"
   },
   "author": "Adarsha PC",
@@ -14,5 +16,8 @@
   ],
   "dependencies": {
     "express": "^4.21.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.5"
   }
 }
