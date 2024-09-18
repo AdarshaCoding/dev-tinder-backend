@@ -1,0 +1,18 @@
+{
+  "name": "dev-tinder-backend",
+  "version": "1.0.0",
+  "description": "Dev Tinder Backend Application",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Adarsha PC",
+  "license": "ISC",
+  "keywords": [
+    "nodejs",
+    "javaScript"
+  ],
+  "dependencies": {
+    "express": "^4.21.0"
+  }
+}
