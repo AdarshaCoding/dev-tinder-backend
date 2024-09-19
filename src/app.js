@@ -2,26 +2,27 @@ const express = require("express");
 
 const app = express();
 
-// Authorization is duplicated
-
-app.get("/admin/getAllUsers", (req, res) => {
-  const token = "xyzz";
+//middleware
+app.use("/admin", (req, res, next) => {
+  const token = "xy1z";
   const isAdminAuthorized = token === "xyz";
   if (!isAdminAuthorized) {
     res.status(401).send("Not authorized!");
   } else {
-    res.send("All users data!");
+    next();
   }
 });
 
+app.get("/user", (req, res) => {
+  res.send("User data!");
+});
+
+app.get("/admin/getAllUsers", (req, res) => {
+  res.send("All users data!");
+});
+
 app.post("/admin/addUser", (req, res) => {
-  const token = "xyz";
-  const isAdminAuthorized = token === "xyz";
-  if (!isAdminAuthorized) {
-    res.status(401).send("Not authorized!");
-  } else {
-    res.send("One user is added!");
-  }
+  res.send("One user is added!");
 });
 
 //listen
