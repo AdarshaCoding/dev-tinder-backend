@@ -9,7 +9,7 @@
 - Installed express.js : npm i express
 - Create a express server
   - listen on 4000 port
-  - Write a request handlers for /test, /hello
+  - Write a request/route handlers for /test, /hello
 - Install nodmon and update the scripts inside package.json - npm install -g nodmon
 - what are dependencies?
 - What is the use of "-g" while npm install

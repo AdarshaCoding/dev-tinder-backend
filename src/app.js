@@ -19,6 +19,19 @@ app.get("/user/:id/:name", (req, res) => {
   res.send(user);
 });
 
+/**
+ * /a/
+ * /a+/   --> a, aaaaaaaa
+ * /ab?c/   -> b is optional
+ * /a(bc)?c/
+ * /ab+/   --> ab, abbbbbbb
+ * /.*fly$/  --> anything before fly, butterfly, dragonfly, aaaafly
+ *   --> * means anything , a.* >> afgdgdfgdsfgdg, .*b >> asdfdgdafgadfb
+ * */
+app.get(/a.*/, (req, res) => {
+  res.send(user);
+});
+
 app.post("/user", (req, res) => {
   //update the DB with data
   // res.send("Data updated succefully!");
