@@ -2,45 +2,41 @@ const express = require("express");
 
 const app = express();
 
-//Get the user data from DB
-
-const user = {
-  firstName: "Adarsha",
-  lastName: "PC",
-};
-
-//request handlers
-// app.use("/user", (req, res) => {
-//   res.send(user);
-// });
-
-app.get("/user/:id/:name", (req, res) => {
-  console.log(req.params);
-  res.send(user);
-});
+// app.use("/user", rH1, rH2, [rH3, rH4], rH5, rH6)
+// we can wrap route Handlers in array, it works in the same way
+app.use(
+  "/user",
+  (req, res, next) => {
+    console.log("First Request Handler");
+    //res.send("Route Handler Function 1");
+    next();
+  },
+  (req, res, next) => {
+    console.log("2nd Request Handler");
+    //res.send("2nd Route Handler");
+    next();
+  },
+  (req, res, next) => {
+    console.log("3rd Request Handler");
+    //res.send("3rd Route Handler");
+    next();
+  },
+  (req, res, next) => {
+    console.log("4th Request Handler");
+    // res.send("4th Route Handler");
+    next(); // express will expect one more route handler here which sends the response back
+  },
+  (req, res) => {
+    console.log("5th Request Handler");
+    res.send("5th Response!");
+  }
+);
 
 /**
- * /a/
- * /a+/   --> a, aaaaaaaa
- * /ab?c/   -> b is optional
- * /a(bc)?c/
- * /ab+/   --> ab, abbbbbbb
- * /.*fly$/  --> anything before fly, butterfly, dragonfly, aaaafly
- *   --> * means anything , a.* >> afgdgdfgdsfgdg, .*b >> asdfdgdafgadfb
- * */
-app.get(/a.*/, (req, res) => {
-  res.send(user);
-});
-
-app.post("/user", (req, res) => {
-  //update the DB with data
-  // res.send("Data updated succefully!");
-  res.status(200).send(req.query);
-});
-
-app.use("/test", (req, res) => {
-  res.send("Testing Page!");
-});
+ * We should not res.send two times within nested or within the same request handler,
+ * it cannot handle because TCP connection must have close after receiving the first response
+ * we can add n number of route handler
+ */
 
 //listen
 app.listen(4000, () => {
