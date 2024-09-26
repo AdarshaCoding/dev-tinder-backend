@@ -55,3 +55,7 @@ Episode - 06:
 - Create a userSchema & user Model
 - Create POST /singup API to add data to database
 - Push some documents using POST API calls from postman
+
+- JS Object vs JSON (difference)
+- Add the express.json middleware to your app and explore why it is used
+- Make your signuo API dynamic to receive data from the end user (as of now from POSTMAN)

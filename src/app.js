@@ -4,16 +4,12 @@ const app = express();
 
 const User = require("./models/user");
 
-app.post("/signup", async (req, res) => {
-  const userObj = {
-    firstName: "Deepashree",
-    lastName: "PK",
-    emailId: "deepa@gmail.com",
-    password: "deepa@123",
-    age: 32,
-    geneder: "Male",
-  };
+//app.use(() => {});  //this will execute for all the routes, similarly used below
+app.use(express.json());
 
+app.post("/signup", async (req, res) => {
+  console.log(req.body);
+  const userObj = req.body;
   try {
     const user = new User(userObj); // new instance of an model
     await user.save(); // writing data onto data base
@@ -21,7 +17,7 @@ app.post("/signup", async (req, res) => {
     res.status(400).send("Error while saving the user!!! " + err.message);
   }
 
-  res.send("Data added successfully!");
+  res.send("Data added successfully!\n" + JSON.stringify(userObj));
 });
 
 // First connect to the database then start listening to the server <--- good practice
