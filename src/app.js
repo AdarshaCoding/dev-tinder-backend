@@ -63,6 +63,22 @@ app.delete("/user", async (req, res) => {
   }
 });
 
+app.patch("/user", async (req, res) => {
+  try {
+    const id = req.body.id;
+    const updatedUser = await User.findByIdAndUpdate(id, {
+      emailId: "aaaaadarsha@gmail.com",
+    });
+    if (!updatedUser) {
+      res.send("User Not Found!");
+    } else {
+      res.send("User Updated successfully!");
+    }
+  } catch (err) {
+    res.status(400).send("Something went wrong!" + err.message);
+  }
+});
+
 // First connect to the database then start listening to the server <--- good practice
 connectDB()
   .then(() => {
