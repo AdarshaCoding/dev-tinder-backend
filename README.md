@@ -58,4 +58,7 @@ Episode - 06:
 
 - JS Object vs JSON (difference)
 - Add the express.json middleware to your app and explore why it is used
-- Make your signuo API dynamic to receive data from the end user (as of now from POSTMAN)
+- Make your signup API dynamic to receive data from the end user (as of now from POSTMAN)
+- Create GET "/user" api based on the user email id which is accepted dynamically
+- Create GET "/feed" API which returns all the users from the mongDB database
+- Create DEL "/user" API to delete the user by accepting the "id" dynamically
